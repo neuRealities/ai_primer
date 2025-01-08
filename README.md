@@ -86,29 +86,34 @@ In the console, type
 wsl --install
 ```
 
-
 ### Docker 
 
-Install Docker Desktop on Windows by following the [setup link](https://docs.docker.com/desktop/setup/install/windows-install/).
+Install Docker Desktop on Windows
 
-- Select WSL 2 if asked.
-- Restart machine at the end. 
+1. Following the [setup link](https://docs.docker.com/desktop/setup/install/windows-install/).
+2. Select WSL 2 if asked.
+3. Restart machine at the end.
+4. Enable Docker on WSL 2 by following [these instructions](https://docs.docker.com/desktop/features/wsl/)
 
+### Git
 
-1. `git submodule update --remote --force`
-2. `docker compose up`
-3. Ctrl + click on the displayed webserver address
+Lets copy this repository to your WS Ubuntu setup, so that we can run Jupyter in your recently installed Docker.
+
+1. Start Ubuntu in your Windows machine (There should be a new app icon installed)
+2. Clone this repo by typing `git clone https://github.com/IQXR/ai_primer` 
+3. `cd ai_primer`
+4. `docker compose up`
+5. Wait for docker to setup
+6. `Ctrl` + `click` on the displayed webserver address. It will likely be [http://127.0.0.1:8888/lab/]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-### Verifying Jupyter Environment 
-
-1. Open the Jupyter Notebook named `00-Blueprint.ipynb`
-2. Run the notebook
-3. There should be no errors.
+1. On the left side navigation, click on `notebooks`
+2. Open the Jupyter notebook namesd `00-Intro`
+3. You're done installing!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

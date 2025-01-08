@@ -1,6 +1,8 @@
 ipywidgets
 torch
 torchvision
+# Data structures
+pandas
 #transformers
 #accelerate
 #datasets
