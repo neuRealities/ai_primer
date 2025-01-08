@@ -5,6 +5,7 @@ torchvision
 pandas
 #Visualization
 matplotlib
+scikit-learn
 #transformers
 #accelerate
 #datasets
