@@ -103,7 +103,7 @@ Lets copy this repository to your WS Ubuntu setup, so that we can run Jupyter in
 2. Clone this repo by typing `git clone https://github.com/IQXR/ai_primer` 
 3. `cd ai_primer`
 4. `docker compose up`
-5. Wait for docker to setup
+5. Wait for docker to finish initial setup
 6. `Ctrl` + `click` on the displayed webserver address. It will likely be [http://127.0.0.1:8888/lab/]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
