@@ -1,0 +1,20 @@
+services:
+  jupyter:
+    build: 
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      #- ./:/srv/work # /srv because of Dockefile WORKDIR instruction (to cache packages)
+      - ./media/:/srv/media # /srv because of Dockefile WORKDIR instruction (to cache packages)
+      - ./notebooks/:/srv/notebooks
+    ports:
+      - 8888:8888
+    container_name: ai_primer_pytorch_jupyter
+    command: "start-notebook.sh --NotebookApp.token=" # Remove the login token. Should return it for production environment
+    deploy:
+          resources:
+            reservations:
+              devices:
+                - driver: nvidia
+                  count: all
+                  capabilities: [gpu]

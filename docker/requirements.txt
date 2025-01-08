@@ -1,0 +1,7 @@
+ipywidgets
+torch
+torchvision
+#transformers
+#accelerate
+#datasets
+#huggingface_hub
