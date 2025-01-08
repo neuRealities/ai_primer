@@ -3,6 +3,8 @@ torch
 torchvision
 # Data structures
 pandas
+#Visualization
+matplotlib
 #transformers
 #accelerate
 #datasets
