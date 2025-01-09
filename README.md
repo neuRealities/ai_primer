@@ -99,12 +99,13 @@ Install Docker Desktop on Windows
 
 Lets copy this repository to your WS Ubuntu setup, so that we can run Jupyter in your recently installed Docker.
 
-1. Start Ubuntu in your Windows machine (There should be a new app icon installed)
-2. Clone this repo by typing `git clone https://github.com/IQXR/ai_primer` 
-3. `cd ai_primer`
-4. `docker compose up`
-5. Wait for docker to finish initial setup
-6. `Ctrl` + `click` on the displayed webserver address. It will likely be [http://127.0.0.1:8888/lab/]
+1. Start Docker Desktop
+2. Start Ubuntu in your Windows machine (There should be a new app icon installed)
+3. Clone this repo by typing `git clone https://github.com/IQXR/ai_primer` 
+4. `cd ai_primer`
+5. `docker compose up`
+6. Wait for docker to finish initial setup
+7. `Ctrl` + `click` on the displayed webserver address. It will likely be [http://127.0.0.1:8888/lab/]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

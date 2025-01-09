@@ -4,7 +4,6 @@ services:
       context: .
       dockerfile: ./docker/Dockerfile
     volumes:
-      #- ./:/srv/work # /srv because of Dockefile WORKDIR instruction (to cache packages)
       - ./media/:/srv/media # /srv because of Dockefile WORKDIR instruction (to cache packages)
       - ./notebooks/:/srv/notebooks
     ports:
