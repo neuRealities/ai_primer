@@ -10,8 +10,3 @@ seaborn
 # Platforms
 fastai
 duckduckgo_search
-# Others
-#transformers
-#accelerate
-#datasets
-#huggingface_hub
