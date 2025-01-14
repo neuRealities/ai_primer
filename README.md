@@ -54,8 +54,8 @@ You can optimize performance with GPU-support, but that's beyond the scope of th
 * [![Docker][Docker]][Docker-url]
 * [![Jupyter][Jupyter]][Jupyter-url]
 * [![Python][Python]][Python-url]
-* [![NumPy][NumPy]][NumPy-url]
 * [![PyTorch][PyTorch]][PyTorch-url]
+* [![NumPy][NumPy]][NumPy-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -86,6 +86,8 @@ In the console, type
 wsl --install
 ```
 
+This will install Ubuntu Linux, without any kind of dual boot.
+
 ### Docker 
 
 Install Docker Desktop on Windows
@@ -113,8 +115,10 @@ Lets copy this repository to your WS Ubuntu setup, so that we can run Jupyter in
 ## Usage
 
 1. On the left side navigation, click on `notebooks`
-2. Open the Jupyter notebook namesd `00-Intro`
+2. Open the Jupyter notebook named `00-Intro`
 3. You're done installing!
+4. To quit the webserver, use `Ctrl` + `C`
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
