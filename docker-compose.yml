@@ -1,19 +1,38 @@
 services:
-  jupyter:
-    build: 
+  jupyter-gpu:
+    build:
       context: .
       dockerfile: ./docker/Dockerfile
     volumes:
-      - ./media/:/srv/media # /srv because of Dockefile WORKDIR instruction (to cache packages)
+      - ./media/:/srv/media
       - ./notebooks/:/srv/notebooks
     ports:
       - 8888:8888
-    container_name: ai_primer_pytorch_jupyter
-    command: "start-notebook.sh --NotebookApp.token=" # Remove the login token. Should return it for production environment
+    container_name: ai_primer_pytorch_jupyter_gpu
+    command: "start-notebook.sh --NotebookApp.token="  # Remove the login token. 
     deploy:
-          resources:
-            reservations:
-              devices:
-                - driver: nvidia
-                  count: all
-                  capabilities: [gpu]
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all  # Use all available GPUs (or specify number of GPUs)
+              capabilities: [gpu]
+    profiles: ["gpu"]
+
+  jupyter-cpu:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - ./media/:/srv/media
+      - ./notebooks/:/srv/notebooks
+    ports:
+      - 8888:8888
+    container_name: ai_primer_pytorch_jupyter_cpu
+    command: "start-notebook.sh --NotebookApp.token="
+    deploy:
+      resources:
+        reservations:
+          devices: []  # No GPU reservation for the CPU version
+    profiles: ["cpu"]
+

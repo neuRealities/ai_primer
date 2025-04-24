@@ -1,6 +1,7 @@
 ipywidgets
 torch
 torchvision
+fastdownload
 # Data structures
 pandas
 #Visualization
