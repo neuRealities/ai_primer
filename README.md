@@ -44,7 +44,7 @@
 
 This primer project offers a streamlined path for AI tool installation, to quick start Data Scientist tools like Jupyter notebooks.
 
-You can optimize performance with GPU-support, but that's beyond the scope of this project. For Docker/CUDA support, you can search online, or follow IQXR's Accelerated Engineering `prototype-base` [Azure repository](https://dev.azure.com/iqxr/PlatformCapabilities/_git/prototype-base).
+You can optimize performance with GPU-support, but that's beyond the scope of this project. For Docker/CUDA support, you can search online, or follow neuRealities' Accelerated Engineering `prototype-base` [GitHub repository](https://github.com/neuRealities/prototype-base).
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -103,7 +103,7 @@ Lets copy this repository to your WS Ubuntu setup, so that we can run Jupyter in
 
 1. Start Docker Desktop
 2. Start Ubuntu in your Windows machine (There should be a new app icon installed)
-3. Clone this repo by typing `git clone https://github.com/IQXR/ai_primer` 
+3. Clone this repo by typing `git clone https://github.com/neuRealities/ai_primer` 
 4. `cd ai_primer`
 5. `docker compose up`
 6. Wait for docker to finish initial setup
