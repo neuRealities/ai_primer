@@ -105,9 +105,10 @@ Lets copy this repository to your WS Ubuntu setup, so that we can run Jupyter in
 2. Start Ubuntu in your Windows machine (There should be a new app icon installed)
 3. Clone this repo by typing `git clone https://github.com/neuRealities/ai_primer` 
 4. `cd ai_primer`
-5. `docker compose up`
-6. Wait for docker to finish initial setup
-7. `Ctrl` + `click` on the displayed webserver address. It will likely be [http://127.0.0.1:8888/lab/]
+5. If you want to run with GPU Acceleration run `docker compose --profile gpu up`
+6. If you want to run with CPU run `docker compose --profile cpu up`
+7. Wait for docker to finish initial setup
+8. `Ctrl` + `click` on the displayed webserver address. It will likely be [http://127.0.0.1:8888/lab/]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
