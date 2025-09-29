@@ -8,6 +8,8 @@ services:
       - ./notebooks/:/srv/notebooks
     ports:
       - 8888:8888
+    environment: # Container environment override
+      PEXELS_API_KEY: ${PEXELS_API_KEY:-NONE}
     container_name: ai_primer_pytorch_jupyter_gpu
     command: "start-notebook.sh --NotebookApp.token="  # Remove the login token. 
     deploy:
@@ -28,6 +30,8 @@ services:
       - ./notebooks/:/srv/notebooks
     ports:
       - 8888:8888
+    environment: # Container environment override
+      PEXELS_API_KEY: ${PEXELS_API_KEY:-NONE}
     container_name: ai_primer_pytorch_jupyter_cpu
     command: "start-notebook.sh --NotebookApp.token="
     deploy:
