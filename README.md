@@ -97,6 +97,16 @@ Install Docker Desktop on Windows
 3. Restart machine at the end.
 4. Enable Docker on WSL 2 by following [these instructions](https://docs.docker.com/desktop/features/wsl/)
 
+### Pexels API
+
+duckduckgo image search has intermittent throttling problems. So instead, we'll use the Pexels to download images for the notebooks. This requires you to get an API key to use their services:
+
+1. Create an account on pexels.com
+2. Navigate to https://www.pexels.com/api/
+3. Your API Key -> Fill details
+4. Create an `.env` file in the root of this project, with contents: `PEXELS_API_KEY=your_api_key_value`
+
+
 ### Git
 
 Lets copy this repository to your WS Ubuntu setup, so that we can run Jupyter in your recently installed Docker.
@@ -126,13 +136,13 @@ Lets copy this repository to your WS Ubuntu setup, so that we can run Jupyter in
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 <!-- Get new badges at [https://github.com/Ileriayo/markdown-badges] -->
-[logo]: media/logo/Logo_GRADIENT_H_KO.png
-[logo-url]: https://www.iqxr.com/
+[logo]: media/logo/neuRealities-Spatial.svg
+[logo-url]: https://www.neuRealities.com/
 
-[contributors-shield]: https://img.shields.io/badge/Contributors-Accelerated_Engineering-red?style=for-the-badge
-[contributors-url]: https://iqxr.atlassian.net/wiki/spaces/AE
+[contributors-shield]: https://img.shields.io/badge/Contributors-neurealities-red?style=for-the-badge
+[contributors-url]: https://www.neurealities.com/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/company/iqxr/
+[linkedin-url]: https://www.linkedin.com/company/neurealities/
 
 [Blender]: https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white
 [Blender-url]: https://www.blender.org/
