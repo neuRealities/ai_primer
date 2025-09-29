@@ -99,7 +99,7 @@ Install Docker Desktop on Windows
 
 ### Pexels API
 
-duckduckgo image search has intermittent throttling problems. So instead, we'll use the Pexels to download images for the notebooks. This requires you to get an API key to use their services:
+duckduckgo image search has intermittent throttling and rate limiting problems. So instead, we can use the Pexels to download images for the notebooks. This requires you to get an API key to use their services:
 
 1. Create an account on pexels.com
 2. Navigate to https://www.pexels.com/api/
