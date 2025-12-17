@@ -1,21 +1,31 @@
 """Module to handle model functions"""
-import torch
+
 import matplotlib.pyplot as plt
 import numpy as np
-from torchvision import datasets
-from torch.utils.data import DataLoader
-from sklearn.metrics import classification_report, confusion_matrix
 import seaborn as sns
-import matplotlib.pyplot as plt
+import torch
+from sklearn.metrics import classification_report, confusion_matrix
+from torch.utils.data import DataLoader
+from torchvision import datasets
+
 
 # Define our model, with parameterized loss function and optimizer
-def train_validate(model, loss_fn, optimizer, trainloader, testloader, device, n_epochs:int=25, flatten:bool = False):
+def train_validate(
+    model,
+    loss_fn,
+    optimizer,
+    trainloader,
+    testloader,
+    device,
+    n_epochs: int = 25,
+    flatten: bool = False,
+):
     """Train for number of epochs"""
     train_losses = []
     test_losses = []
 
     for epoch in range(n_epochs):
-        model.train() # Set mode to training - Dropouts will be used here
+        model.train()  # Set mode to training - Dropouts will be used here
         train_epoch_loss = 0
 
         # Iterate over each batch of the training data
@@ -43,19 +53,19 @@ def train_validate(model, loss_fn, optimizer, trainloader, testloader, device, n
 
         # One epoch of training complete
         # calculate average training epoch loss
-        train_epoch_loss = train_epoch_loss/len(trainloader)
+        train_epoch_loss = train_epoch_loss / len(trainloader)
 
         # Now Validate on testset
         with torch.no_grad():
             test_epoch_acc = 0
             test_epoch_loss = 0
-            model.eval() # Set mode to eval - Dropouts will NOT be used here
+            model.eval()  # Set mode to eval - Dropouts will NOT be used here
             for images, labels in testloader:
-                images, labels = images.to(device), labels.to(device)                    
+                images, labels = images.to(device), labels.to(device)
                 # Flatten images to batch_size x input features
                 if flatten:
                     images = images.view(images.shape[0], -1)
-                # Make predictions 
+                # Make predictions
                 test_outputs = model(images)
                 # Calculate test loss
                 test_batch_loss = loss_fn(test_outputs, labels)
@@ -72,25 +82,28 @@ def train_validate(model, loss_fn, optimizer, trainloader, testloader, device, n
 
             # One epoch of training and validation done
             # Calculate average testing epoch loss
-            test_epoch_loss = test_epoch_loss/len(testloader)
-            test_epoch_loss = test_epoch_loss.cpu() # To be able to plot it
+            test_epoch_loss = test_epoch_loss / len(testloader)
+            test_epoch_loss = test_epoch_loss.cpu()  # To be able to plot it
             # Calculate accuracy as correct_pred/total_samples
-            test_epoch_acc = test_epoch_acc/len(testloader)
+            test_epoch_acc = test_epoch_acc / len(testloader)
             # Save epoch losses for plotting
             train_losses.append(train_epoch_loss)
             test_losses.append(test_epoch_loss)
             # Print stats for this epoch
-            print(f'Epoch: {epoch:02} -> train_loss: {train_epoch_loss:.10f}, val_loss: {test_epoch_loss:.10f}, ',
-                    f'val_acc: {test_epoch_acc*100:.2f}%')
+            print(
+                f"Epoch: {epoch:02} -> train_loss: {train_epoch_loss:.10f}, val_loss: {test_epoch_loss:.10f}, ",
+                f"val_acc: {test_epoch_acc*100:.2f}%",
+            )
     # Finally plot losses
-    plt.plot(train_losses, label='train-loss')
-    plt.plot(test_losses, label='val-loss')
+    plt.plot(train_losses, label="train-loss")
+    plt.plot(test_losses, label="val-loss")
     plt.legend()
     plt.show()
 
+
 def test_validate(model, test_dl, device):
     """Validate against test set"""
-    with torch.no_grad(): # Ne need to calculate backward pass for test set.
+    with torch.no_grad():  # Ne need to calculate backward pass for test set.
         batch_acc = []
         model.eval()
         for images, labels in test_dl:
@@ -105,12 +118,13 @@ def test_validate(model, test_dl, device):
             result = pred_labels == labels.view(pred_labels.shape)
             acc = torch.mean(result.type(torch.FloatTensor))
             batch_acc.append(acc.item())
-        print(f'Test Accuracy: {torch.mean(torch.tensor(batch_acc))*100:.2f}%')
+        print(f"Test Accuracy: {torch.mean(torch.tensor(batch_acc))*100:.2f}%")
         return batch_acc
+
 
 def test_validate_confusion(model, test_dl, device, classes):
     """Validate against a test set, and display confusion matrix"""
-    # Set the model to evaluation mode. This is important as certain layers like 
+    # Set the model to evaluation mode. This is important as certain layers like
     # dropout behave differently during training and evaluation.
     model.eval()
 
@@ -150,19 +164,31 @@ def test_validate_confusion(model, test_dl, device, classes):
     cm = confusion_matrix(all_labels, all_preds)
 
     # Visualize the confusion matrix using seaborn's heatmap
-    plt.figure(figsize=(10,8))
-    sns.heatmap(cm, annot=True, fmt="d", cmap=plt.cm.Blues, xticklabels=classes, yticklabels=classes)
-    plt.xlabel('Predicted Label')  # x-axis label
-    plt.ylabel('True Label')       # y-axis label
-    plt.title('Confusion Matrix')  # Title of the plot
-    plt.show()                     # Display the plot
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(
+        cm,
+        annot=True,
+        fmt="d",
+        cmap=plt.cm.Blues,
+        xticklabels=classes,
+        yticklabels=classes,
+    )
+    plt.xlabel("Predicted Label")  # x-axis label
+    plt.ylabel("True Label")  # y-axis label
+    plt.title("Confusion Matrix")  # Title of the plot
+    plt.show()  # Display the plot
 
-    print(f'Test Accuracy: {torch.mean(torch.tensor(batch_acc))*100:.2f}%')
+    print(f"Test Accuracy: {torch.mean(torch.tensor(batch_acc))*100:.2f}%")
+
 
 def set_fashion_dataset(transform, validation_ratio, batch_size):
     """Return train and test datasets and dataloaders"""
-    train_ds  = datasets.FashionMNIST(root="data", train=True,  download=True, transform=transform)
-    test_ds   = datasets.FashionMNIST(root="data", train=False, download=True, transform=transform)
+    train_ds = datasets.FashionMNIST(
+        root="data", train=True, download=True, transform=transform
+    )
+    test_ds = datasets.FashionMNIST(
+        root="data", train=False, download=True, transform=transform
+    )
     # Split training set into training and validation
     train_num = len(train_ds)
     indices = list(range(train_num))
@@ -171,9 +197,26 @@ def set_fashion_dataset(transform, validation_ratio, batch_size):
     val_idx, train_idx = indices[:split], indices[split:]
 
     train_dl = DataLoader(train_ds, batch_size=batch_size)
-    val_dl   = DataLoader(train_ds, batch_size=batch_size)
-    test_dl  = DataLoader(test_ds, batch_size=batch_size, shuffle=True)
-    print("Train/Validation/Test Split:", len(train_idx), "/", len(val_idx), "/", len(test_ds))
-    classes  = ['T-shirt/top','Trouser','Pullover','Dress','Coat','Sandal','Shirt','Sneaker','Bag','Ankle Boot']
+    val_dl = DataLoader(train_ds, batch_size=batch_size)
+    test_dl = DataLoader(test_ds, batch_size=batch_size, shuffle=True)
+    print(
+        "Train/Validation/Test Split:",
+        len(train_idx),
+        "/",
+        len(val_idx),
+        "/",
+        len(test_ds),
+    )
+    classes = [
+        "T-shirt/top",
+        "Trouser",
+        "Pullover",
+        "Dress",
+        "Coat",
+        "Sandal",
+        "Shirt",
+        "Sneaker",
+        "Bag",
+        "Ankle Boot",
+    ]
     return train_ds, test_ds, train_dl, val_dl, test_dl, classes
-
